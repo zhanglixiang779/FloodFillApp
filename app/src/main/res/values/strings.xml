@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FloodFillApp</string>
+    <string name="app_title">Flood Fill Game</string>
     <string name="reset">Reset</string>
 </resources>
