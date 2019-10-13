@@ -21,9 +21,9 @@ class FloodFillAdapter(
     private var grid = arrayOf<Array<Int>>()
 
     init {
-        for (i in 0 until 10) {
+        for (i in 0 until GRID_SIZE) {
             var array = arrayOf<Int>()
-            for (j in 0 until 10) {
+            for (j in 0 until GRID_SIZE) {
                 array += 0
             }
             grid += array
@@ -52,7 +52,7 @@ class FloodFillAdapter(
             return displayMetrics.widthPixels
         }
 
-        private fun isInGrid(row: Int, col: Int) = row in 0 ..9 && col in 0 .. 9
+        private fun isInGrid(row: Int, col: Int) = row in 0 until GRID_SIZE && col in 0 until GRID_SIZE
 
         private fun floodFill(row: Int, col: Int) {
             val queue = LinkedList<Pair<Int, Int>>()
@@ -61,7 +61,7 @@ class FloodFillAdapter(
                 val pair = queue.poll()
                 val newRow = pair.first
                 val newCol = pair.second
-                colors[newRow * 10 + newCol] = Color.GREEN
+                colors[newRow * GRID_SIZE + newCol] = Color.GREEN
                 grid[newRow][newCol] = Color.GREEN
 
                 //left
@@ -91,14 +91,14 @@ class FloodFillAdapter(
         }
 
         fun onBind(color: Int, position: Int) {
-            val row = position / 10
-            val col = position % 10
+            val row = position / GRID_SIZE
+            val col = position % GRID_SIZE
             grid[row][col] = color
 
             (itemView as? FrameLayout)?.run {
                 setBackgroundColor(color)
-                layoutParams.width = getScreenWidth(activity) / 10
-                layoutParams.height = getScreenWidth(activity) / 10
+                layoutParams.width = getScreenWidth(activity) / GRID_SIZE
+                layoutParams.height = getScreenWidth(activity) / GRID_SIZE
                 setOnClickListener {
                     if (color == Color.WHITE) {
                         Executors.newSingleThreadExecutor().execute {

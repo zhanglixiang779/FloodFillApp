@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val floodFillAdapter = FloodFillAdapter(initColors(), this)
         grid.run {
             adapter = floodFillAdapter
-            layoutManager = GridLayoutManager(this@MainActivity, 10)
+            layoutManager = GridLayoutManager(this@MainActivity, GRID_SIZE)
         }
 
         retry.setOnClickListener {
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initColors(): ArrayList<Int> {
         val colors = ArrayList<Int>()
-        for (index in 0 until 100) {
+        for (index in 0 until GRID_SIZE * GRID_SIZE) {
             when(Random().nextBoolean()) {
                 true -> colors.add(Color.WHITE)
                 false -> colors.add(Color.BLACK)
