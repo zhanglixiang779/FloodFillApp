@@ -66,29 +66,25 @@ class FloodFillAdapter(
 
                 //left
                 if (isInGrid(newRow, newCol - 1)
-                    && grid[newRow][newCol - 1] != Color.BLACK
-                    && grid[newRow][newCol - 1] != Color.GREEN) {
+                    && grid[newRow][newCol - 1] == Color.WHITE) {
                     queue.add(Pair(newRow, newCol - 1))
                 }
 
                 //top
                 if (isInGrid(newRow - 1, newCol)
-                    && grid[newRow - 1][newCol] != Color.BLACK
-                    && grid[newRow - 1][newCol] != Color.GREEN) {
+                    && grid[newRow - 1][newCol] == Color.WHITE) {
                     queue.add(Pair(newRow - 1, newCol))
                 }
 
                 //right
                 if (isInGrid(newRow, newCol + 1)
-                    && grid[newRow][newCol + 1] != Color.BLACK
-                    && grid[newRow][newCol + 1] != Color.GREEN) {
+                    && grid[newRow][newCol + 1] == Color.WHITE) {
                     queue.add(Pair(newRow, newCol + 1))
                 }
 
                 //bottom
                 if (isInGrid(newRow + 1, newCol)
-                    && grid[newRow + 1][newCol] != Color.BLACK
-                    && grid[newRow + 1][newCol] != Color.GREEN) {
+                    && grid[newRow + 1][newCol] == Color.WHITE) {
                     queue.add(Pair(newRow + 1, newCol))
                 }
             }
